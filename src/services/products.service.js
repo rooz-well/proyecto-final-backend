@@ -8,7 +8,20 @@ const createError = (message, status) => {
 };
 
 // Validar los datos de un producto
-const validateProduct = ({ name, price }) => {
+const validateProduct = (productData) => {
+  if (
+    !productData ||
+    typeof productData !== "object" ||
+    Array.isArray(productData)
+  ) {
+    throw createError(
+      "Los datos del producto deben ser un objeto JSON válido.",
+      400
+    );
+  }
+
+  const { name, price } = productData;
+
   if (typeof name !== "string" || !name.trim()) {
     throw createError("El nombre del producto es obligatorio.", 400);
   }

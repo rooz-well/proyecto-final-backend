@@ -1,5 +1,20 @@
 import * as productService from "../services/products.service.js";
 
+// Validar el cuerpo de la solicitud
+const validateRequestBody = (body) => {
+  if (
+    !body ||
+    typeof body !== "object" ||
+    Array.isArray(body)
+  ) {
+    const error = new Error(
+      "El cuerpo de la solicitud debe ser un objeto JSON válido."
+    );
+    error.status = 400;
+    throw error;
+  }
+};
+
 // Obtener todos los productos
 const getProducts = async (req, res, next) => {
   try {
@@ -27,6 +42,8 @@ const getProductById = async (req, res, next) => {
 // Crear un producto
 const createProduct = async (req, res, next) => {
   try {
+    validateRequestBody(req.body);
+
     const { name, price } = req.body;
 
     const newProduct = await productService.createProduct({
@@ -43,6 +60,8 @@ const createProduct = async (req, res, next) => {
 // Actualizar un producto
 const updateProduct = async (req, res, next) => {
   try {
+    validateRequestBody(req.body);
+
     const { id } = req.params;
     const { name, price } = req.body;
 

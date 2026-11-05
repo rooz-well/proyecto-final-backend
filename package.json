@@ -1,15 +1,22 @@
 {
   "name": "proyecto-final-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "API REST para la gestión de productos con Node.js, Express, Firebase Firestore y autenticación JWT.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "nodejs",
+    "express",
+    "api-rest",
+    "firebase",
+    "firestore",
+    "jwt",
+    "backend"
+  ],
+  "author": "rooz-well",
+  "license": "UNLICENSED",
   "type": "module",
   "dependencies": {
     "body-parser": "^2.4.0",
